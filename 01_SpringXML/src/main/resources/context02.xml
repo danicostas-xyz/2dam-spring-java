@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 
+	
+	Existe otro ciclo de vida en Spring, llamado PROTOTYPE
+	Cada vez que pidamos este BEAN a SPRING, nos devuelve una COPIA del mismo que NO SERÁ GESTIONADA POR EL CONTEXTO DE SPRING
+	
+	 -->
+	
+	<bean id="personaPrototipada" class="modelo.entidad.Persona" scope="prototype">
+	 	<property name="nombre" value=""></property> <!-- Podemos poner propiedades por defecto -->
+	 	<property name="edad" value="18"></property>
+	 	<property name="peso" value="0.0"></property>
+	</bean>
+
+</beans>
