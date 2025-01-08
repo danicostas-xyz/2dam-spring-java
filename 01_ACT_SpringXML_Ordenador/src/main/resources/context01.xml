@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="ram" class="modelo.entidad.Ram" scope="prototype">
+		<property name="manufacturer" value="Corsair"></property>
+		<property name="size" value="16"></property>
+		<property name="price" value="100"></property>
+	</bean>
+	
+	<bean id="ramGraphicCard" class="modelo.entidad.Ram" scope="prototype">
+		<property name="manufacturer" value="Samsung"></property>
+		<property name="size" value="12"></property>
+		<property name="price" value="100"></property>
+	</bean>
+	
+	<bean id="mouse" class="modelo.entidad.Peripheral">
+		<property name="type" value="Mouse"></property>
+		<property name="manufacturer" value="Razer"></property>
+		<property name="price" value="250"></property>
+	</bean>
+	
+	<bean id="keyboard" class="modelo.entidad.Peripheral">
+		<property name="type" value="Keyboard"></property>
+		<property name="manufacturer" value="Logitech"></property>
+		<property name="price" value="300"></property>
+	</bean>
+	
+	<bean id="motherboard" class="modelo.entidad.MotherBoard">
+		<property name="manufacturer" value="MSI"></property>
+		<property name="price" value="200"></property>
+		<property name="formFactor" value="ATX"></property>
+	</bean>
+	
+	<bean id="graphicCard" class="modelo.entidad.GraphicCard">
+		<property name="manufacturer" value="NVIDIA"></property>
+		<property name="model" value="3060Ti"></property>
+		<property name="CUDACores" value="4864"></property>
+		<property name="price" value="400"></property>
+		<property name="ram" ref="ramGraphicCard"></property>
+	</bean>
+	
+	<bean id="cpu" class="modelo.entidad.Cpu">
+		<property name="manufacturer" value="Intel"></property>
+		<property name="model" value="i7"></property>
+		<property name="numberOfCores" value="16"></property>
+		<property name="price" value="390"></property>
+	</bean>
+	
+	<bean id="ramList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="modelo.entidad.Ram">
+				<ref bean="ram"/>
+				<ref bean="ram"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="peripheralList" class="java.util.ArrayList">
+		<constructor-arg>
+			<list value-type="modelo.entidad.Peripheral">
+				<ref bean="mouse"/>
+				<ref bean="keyboard"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="computer" class="modelo.entidad.Computer">
+		<property name="price" value="1200"></property>
+		<property name="cpu" ref="cpu"></property>
+		<property name="graphicCard" ref="graphicCard"></property>
+		<property name="motherBoard" ref="motherboard"></property>
+		<property name="ramList" ref="ramList"></property>
+		<property name="peripheralList" ref="peripheralList"></property>
+	</bean>
+	
+</beans>
