@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!--
+	
+		La manera más habitual de hacer INYECCIÓN DE DEPENDENCIAS en SPRING
+		es mediante el concepto de AUTOWIRE.
+		
+		-> La dependencia que se necesite para un objeto dado será buscada
+		automáticamente por SPRING
+		
+		-> Hay que especificar cómo se busca el objeto en el atributo de autowire
+		
+			-> default: (por defecto) No se realiza inyección automática. Tienes que declarar explícitamente las dependencias en el archivo XML o mediante anotaciones.
+			-> byName: Inyecta dependencias buscando un bean cuyo nombre coincida con el nombre del atributo o propiedad del bean.
+			-> byType: Inyecta dependencias buscando un bean cuyo tipo coincida con el tipo de la propiedad.
+			-> constructor: Inyecta dependencias llamando al constructor que mejor coincida con los tipos de los beans disponibles.
+			-> autodetect: (obsoleto en versiones recientes) Intenta usar constructor primero y, si no puede resolverlo, recurre a byType.
+		
+		-> ¿Y si hay más de un objeto de dicho tipo que cualifique? -> ERROR (Solo puede haber uno con AUTOWIRE)
+		
+	-->
+
+	<bean id="director" class="modelo.entidad.Director">
+		<property name="nombre" value="James Cameron"></property>
+	</bean>
+	
+	<bean id="pelicula" class="modelo.entidad.Pelicula" autowire="byType">
+		<property name="titulo" value=""></property>
+	</bean>
+	
+	<bean id="persona" class="modelo.entidad.Persona">
+		<property name="nombre" value="Robert Smith"></property>
+	</bean>
+
+
+</beans>

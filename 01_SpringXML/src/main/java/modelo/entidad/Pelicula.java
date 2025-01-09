@@ -3,6 +3,15 @@ package modelo.entidad;
 public class Pelicula {
 	private String titulo;
 	private Director director;
+	private Persona productor;
+
+	public Persona getProductor() {
+		return productor;
+	}
+
+	public void setProductor(Persona productor) {
+		this.productor = productor;
+	}
 
 	public String getTitulo() {
 		return titulo;
@@ -22,7 +31,7 @@ public class Pelicula {
 
 	@Override
 	public String toString() {
-		return "Pelicula [titulo=" + titulo + ", director=" + director + "]";
+		return "Pelicula [titulo=" + titulo + ", director=" + director + ", productor=" + productor + "]";
 	}
 
 }
