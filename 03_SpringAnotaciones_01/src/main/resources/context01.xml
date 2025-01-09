@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+	<!-- Aquí podemos dar de alta todos los beans que queramos. Sí queremos 
+		que Spring dé de alta beans por anotaciones, hay que decirle donde tiene 
+		que ir a buscar dichas anotaciones Para ello hay que añadir xmlns:context="http://www.springframework.org/schema/context" 
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd" 
+		Y habilitar la descarga para que se descargue el xmlns -->
+
+	<!--<bean id="productor" class="modelo.entidad.Persona" autowire="byType"> 
+		<property name="nombre" value="Michael Scott"></property> </bean> -->
+
+	<!-- Debería poderse dar de alta un bean también en XML además de anotaciones, 
+		pero en este caso, al usar XML y anotaciones, da error -->
+	<context:component-scan
+		base-package="modelo.entidad"></context:component-scan>
+</beans>
