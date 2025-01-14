@@ -1,4 +1,4 @@
-package modelo.entidad;
+package es.upgrade.modelo.entidad;
 
 
 public class Peripheral {

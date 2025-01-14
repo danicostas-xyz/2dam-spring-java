@@ -1,19 +1,17 @@
 package es.upgrade.cfg;
 
-import java.awt.font.GraphicAttribute;
 import java.util.ArrayList;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
-import ch.qos.logback.core.Context;
-import modelo.entidad.Computer;
-import modelo.entidad.Cpu;
-import modelo.entidad.GraphicCard;
-import modelo.entidad.MotherBoard;
-import modelo.entidad.Peripheral;
-import modelo.entidad.Ram;
+import es.upgrade.modelo.entidad.Computer;
+import es.upgrade.modelo.entidad.Cpu;
+import es.upgrade.modelo.entidad.GraphicCard;
+import es.upgrade.modelo.entidad.MotherBoard;
+import es.upgrade.modelo.entidad.Peripheral;
+import es.upgrade.modelo.entidad.Ram;
 
 @Configuration
 public class Configuracion {
@@ -67,21 +65,20 @@ public class Configuracion {
 	}
 	
 	@Bean
-	Computer computer(Cpu cpu, GraphicCard graphicCard, MotherBoard motherBoard, Ram ram) {
+	Computer computer(Cpu cpu, GraphicCard graphicCard, MotherBoard motherBoard, Ram ram, Peripheral teclado, Peripheral raton) {
 		
 		Computer computer = new Computer();
 		ArrayList<Ram> ramList = new ArrayList<Ram>();
 		ArrayList<Peripheral> peripheralList = new ArrayList<Peripheral>();
-		Ram ram1 = new Ram();
-		ram1.setManufacturer("Samsung");
-		ram1.setPrice(100);
-		ram1.setSize(16);
-		Ram ram2 = new Ram();
-		ram2.setManufacturer("Samsung");
-		ram2.setPrice(100);
-		ram2.setSize(16);
-		ramList.add(ram1);
-		ramList.add(ram2);
+		ramList.add(ram);
+		ramList.add(ram);
+		peripheralList.add(teclado);
+		peripheralList.add(raton);
+		computer.setCpu(cpu);
+		computer.setGraphicCard(graphicCard);
+		computer.setMotherBoard(motherBoard);
+		computer.setPeripheralList(peripheralList);
+		computer.setRamList(ramList);
 		
 		return computer;
 	}
